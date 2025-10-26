@@ -1,7 +1,12 @@
+import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
+import * as schema from './schema';
 
-// This is a temporary solution to get the build to pass.
-// The application will not be able to connect to a real database until the placeholder is replaced with a valid connection string.
-const connectionString = "postgresql://user:password@host:port/db?sslmode=require";
+import "dotenv/config";
 
-export const db = drizzle(connectionString);
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not set");
+}
+
+const sql = neon(process.env.DATABASE_URL);
+export const db = drizzle(sql, { schema });
