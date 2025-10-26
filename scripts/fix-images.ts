@@ -1,5 +1,5 @@
 import { db } from '../src/db/drizzle';
-import { recipes, products, communityEvents } from '../src/db/schema';
+import { recipes, products } from '../src/db/schema';
 import { eq } from 'drizzle-orm';
 
 async function updateImages() {

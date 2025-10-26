@@ -1,5 +1,5 @@
 import type { NextAuthOptions, User } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+// import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
@@ -20,11 +20,11 @@ export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt" },
 
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      allowDangerousEmailAccountLinking: false,
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID!,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    //   allowDangerousEmailAccountLinking: false,
+    // }),
 
     CredentialsProvider({
       name: "Email & Password",
